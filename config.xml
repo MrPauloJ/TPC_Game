@@ -3,7 +3,8 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
 	    xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.TPC"
+		xmlns:cdv="http://cordova.apache.org/ns/1.0"
+        id        = "com.cordova.TPC"
         version   = "1.0.0">
 
    <name>Trilha do Patrimônio Cultural</name>
@@ -15,7 +16,8 @@
    <author email="#">
        WILLIAMS URBANO
    </author>
-   <preference name="permissions" value="none"/>
+   <!--<preference name="permissions" value="none"/>-->
+   <preference name="android-minSdkVersion" value="24" />
    <!-- Customize your app and platform with the preference element. -->
    <preference name="orientation" value="landscape" />  <!-- all: default means both landscape and portrait are enabled -->
    <preference name="target-device" value="universal" />  <!-- all: possible values handset, tablet, or universal -->
@@ -26,31 +28,33 @@
    <preference name="ios-statusbarstyle" value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
    <preference name="detect-data-types" value="true" />  <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
 	<!-- Icones -->
-	<icon src="ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="ldpi" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="mdpi" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="hdpi" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="xhdpi" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="blackberry" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="blackberry" gap:state="hover"/>
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="57" height="57" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="72" height="72" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="114" height="114" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="144" height="144" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="webos" />
-    <icon src="ImgsOfficial/iconTCp.png"  gap:platform="winphone" />
-    <icon src="ImgsOfficial/iconTCp.png" gap:platform="winphone"   gap:role="background" />
-	<icon src="ImgsOfficial/iconTCp.png" />
+	<icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="ldpi" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="blackberry" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="blackberry" gap:state="hover"/>
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="57" height="57" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="72" height="72" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="114" height="114" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="ios"        width="144" height="144" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="webos" />
+    <icon src="www/ImgsOfficial/iconTCp.png"  gap:platform="winphone" />
+    <icon src="www/ImgsOfficial/iconTCp.png" gap:platform="winphone"   gap:role="background" />
+	<icon src="www/ImgsOfficial/iconTCp.png" />
 	
     <access origin="*"/>
+	<allow-navigation href="*"/>
+	<allow-intent href="*" />
+	<plugin name="cordova-plugin-websocket"/>
 	<plugin name="cordova-plugin-whitelist" spec="1" />
-    <access origin="*" />
-    <allow-intent href="http://*/*" />
-    <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
+	<allow-intent href="wss:*" />
+	<allow-intent href="ws:*" />
     <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <platform name="android">
-        <allow-intent href="market:*" />
+		<preference name="KeepRunning" value="true"/>
+		<edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+			<application android:usesCleartextTraffic="true" />
+		</edit-config>
     </platform>
 </widget>
