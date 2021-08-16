@@ -1,0 +1,167 @@
+@font-face{
+	font-family:'ATypewriterForMe';
+	src:url('ATypewriterForMe.ttf');
+}
+
+body{
+background: url("../ImgsOfficial/Galeria/BG_galeria.png");
+background-position: center;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+background-attachment:fixed;
+font-family:'ATypewriterForMe';
+}
+
+#inputBlock{
+	position:relative;
+	display:block;
+	top:10%;
+	height:88%;
+	width:60%;
+	font-size:90%;
+	left:17.5%;
+}
+
+.cenarios{
+	position:relative;
+	top:8%;
+	left:5%;
+	height:80%;
+	width:100%;
+	font-size:90%;
+	border: 1px solid #262626;
+	border-radius:5px;
+}
+
+#leftSideCenario{
+	position:relative;
+	display:block;
+	height:100%;
+	width:50%;
+	float:left;
+}
+
+.contentLeft{
+	text-align:center;
+	position:relative;
+	width:100%;
+	margin-top:5%;
+}
+
+.contentLeft span{
+	position:relative;
+	font-size:120%;
+	margin-top:40px;
+}
+
+#codesCenarios{
+	position:relative;
+	display:block;
+	height:78%;
+	width:95%;
+	border:1px #262626 solid;
+	border-radius:10px;
+	overflow-y:scroll;
+}
+
+#codesCenarios input{
+	position:relative;
+	display:block;
+	margin-top:1%;
+	width:90%;
+	border-radius:10px;
+	background:#3498db;
+	color:#fff;
+	border:0;
+	white-space: normal; /*quebrar linha do value dos inputs*/
+}
+
+#rightSideCenario{
+	position:relative;
+	display:block;
+	background:#2c3e50;
+	color:#fff;
+	height:99.9%;
+	top:0;
+	width:50%;
+	float:right;
+	overflow-y:scroll;
+}
+
+#rightSideCenario label{
+	position:relative;
+	display:block;
+	width:100%;
+	margin-top:1.5%;
+	border-bottom:2px #fff solid;
+	border-radius:3px;
+}
+
+#buttonsBlock{
+	position:relative;
+	display:block;
+	height:auto;
+	width:15%;
+	top:8%;
+	right:1%;
+	float:right;
+}
+
+#buttonsBlock input{
+	position:relative;
+	display:block;
+	height:auto;
+	width:100%;
+	margin-bottom:15%;
+}
+
+/*Medias queries*/
+
+@media (max-width: 575.98px) {
+	.contentLeft{
+		height:22%;
+	}
+	#codesCenarios{
+	height:70%;
+	}
+}
+
+/*Esta primeira é excepcional. A partir de 400px fica bagunçado.*/
+@media (max-width: 470px) {
+	body{
+		font-size:85%;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.contentLeft{
+		height:20%;
+	}
+	#codesCenarios{
+	height:73%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.contentLeft{
+		height:18%;
+	}
+	#codesCenarios{
+	height:75%;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.contentLeft{
+		height:14%;
+	}
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+	.contentLeft{
+		height:14%;
+	}
+	body{
+		font-size:150%;
+	}
+}
