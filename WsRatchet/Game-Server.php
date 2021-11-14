@@ -12,7 +12,7 @@ use MyApp\Game_Client;
                 new Game_Client()
             )
         ),
-        8085
+        3281
     );
 
     $server->run();
