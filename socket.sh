@@ -1,2 +1,2 @@
-php socket/socket.php &
+php socket.php &
 exec "$@"
