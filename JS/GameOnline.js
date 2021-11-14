@@ -14,7 +14,7 @@ var jogoOnlineIniciado = false;
 
 //------------------(CONEXÃO WEBSOCKET)---------------------------
 //----------------------------------------------------------------
-var conn = new WebSocket('wss://tpc-server.herokuapp.com:3281');
+var conn = new WebSocket('wss://tpc-server.herokuapp.com/wss');
 
 //tpcserver2.ddns.net
 conn.onopen = function(e) {
