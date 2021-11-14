@@ -1,2 +1,2 @@
-php socket.php &
+php WsRatchet/Game-Server.php &
 exec "$@"
