@@ -33,3 +33,5 @@ OBS: Projeto APK gerado pelo cordova, criado e gerenciado pela ADOBE.
 - O jogo online tem dependência do  Ratchet/vendor/Composer do PHP
 - BD_TPC.sql se refere a criação do banco de dados, utilizado tanto offline quanto online.
 - Banco de dados salva os dados de cada patrimonio ( Imagem, Questões, Respostas )
+- POO apenas para os jogadores (CLIENTE e SERVER) e jogo(SERVER)
+- Estrutura do jogo no cliente está aberta, sem POO.
