@@ -1,7 +1,7 @@
 {
     "autoload": {
         "psr-4": {
-            "MyApp\\": "WsClasse"
+            "MyApp\\": "WsRatchet\\WsClasse"
         }
     },
     "require": {
