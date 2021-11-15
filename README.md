@@ -2,7 +2,7 @@
 
 Jogo digital (offline e online) desenvolvido para aprendizado lúdico no ensino de história e utilizado como projeto de mestrado.
 
-Reportagem: 
+Reportagem: [Governo de Pernambuco - Educação](http://www.educacao.pe.gov.br/portal/?pag=1&cat=18&art=6369)
 
 Mais informações em: [TPC_GAME](#) - SEM LINK
 
