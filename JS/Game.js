@@ -19,7 +19,7 @@ var Temporizador, seg, timeTimeout, P_I;
 function Add_ScriptOnline(file_script){
 	var arq_js 		= document.createElement("script"); //criando um elemento script
 		arq_js.type = "text/javascript";//informando o type como text/javacript
-		arq_js.src 	= file_script;//inserindo um src com o valor do par‚metro file_script
+		arq_js.src 	= file_script;//inserindo um src com o valor do par√¢metro file_script
 	document.body.appendChild(arq_js);//inserindo o elemento(arq_js) como filho do  BODY
 }
 
@@ -33,13 +33,13 @@ var Question_Heritage = ["","","","","","","","","","","","","","",""];
 var Answer_Question = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]];
 var Tips_Heritage = [["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""],["","",""]];
 	
-//posiÁ„o da 1∞ casa trilha
+//posi√ß√£o da 1¬∞ casa trilha
 posGreen = [[790,10]];
 posRed = [[810,10]];
 posYellow = [[855,10]];
 posBlue = [[835,10]]; 
 
-//posiÁıes da trilha a partir da 2∞ casa
+//posi√ß√µes da trilha a partir da 2¬∞ casa
 posicao = [ 
 	0,
 	[820,65],
@@ -101,7 +101,7 @@ posicao = [
 
 
 //--------------------------------------------------------------------------------------	
-//InformaÁ„o dos jogadores
+//Informa√ß√£o dos jogadores
 function Jogador(Nick, Time, Score, MapSpace, Dice) {
     this.Nick = Nick;
 	this.Time = Time
@@ -127,7 +127,7 @@ function maisJogador(){
 		document.getElementById("infoPlayer4").style.visibility="visible";
 		quantidadeJogadores+=1;
 	}else if((quantidadeJogadores==4) && (quantidadeJogadores<=4)){
-		alert("Este jogo suporta no m·ximo 4 jogadores por partida.");
+		alert("Este jogo suporta no m√°ximo 4 jogadores por partida.");
 	}
 }
 
@@ -139,7 +139,7 @@ function menosJogador(){
 		document.getElementById("infoPlayer3").style.visibility="hidden";
 		quantidadeJogadores-=1;
 	}else if((quantidadeJogadores==2) && (quantidadeJogadores<=4)){
-		alert("Este jogo requer no mÌnimo 2 jogadores.");
+		alert("Este jogo requer no m√≠nimo 2 jogadores.");
 	}
 }
 
@@ -227,15 +227,15 @@ function Comando(O_C){
 			document.getElementById("P_ID_SALA").style.visibility = "visible";
 			break;
 		default:
-			alert("Erro na seÁ„o COMANDO");
+			alert("Erro na se√ß√£o COMANDO");
 			break;
 	}
 }
 //--------------------------------------------------------------------------------------
 
-//FunÁ„o para iniciar o jogo e mostrar o tabuleiro
+//Fun√ß√£o para iniciar o jogo e mostrar o tabuleiro
 function Iniciar(){
-	//Guardar os patrimÙnios dentro de vari·veis globais
+	//Guardar os patrim√¥nios dentro de vari√°veis globais
 	Cenario = document.getElementById("Code").value;
 	var P1 = document.getElementById("P1").value;
 	var P2 = document.getElementById("P2").value;
@@ -247,17 +247,17 @@ function Iniciar(){
 	//-------------------------------------------(INICIO DO MODO ONLINE)-----------------------------------------------------------------------
 	if (sala == 1){
 	
-		//checar se todos os campos est„o preenchidos
+		//checar se todos os campos est√£o preenchidos
 		if((Cenario.length == 0) || (P1.length == 0) || (BtClicked == false)){ 
 			alert("Preencha todos os campos antes de iniciar.");
 			document.getElementById("buttonSend").disabled = false;
 		} else {
 		//-------------------------------------------------------------------------------------------------------------------------
-				$.post( "https://trosleihard.000webhostapp.com/TCP/SelectCodeRoom.php", { Code_Room: Cenario} )
+				$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 					.done(function( data ) {
 					ResultAjax = JSON.parse(data);
 					if((ResultAjax != Cenario)){
-						alert("Cen·rio inexistente em nosso banco de dados.");
+						alert("Cen√°rio inexistente em nosso banco de dados.");
 						document.getElementById("buttonSend").disabled = false;
 					} else{
 						//Checar comando
@@ -288,13 +288,13 @@ function Iniciar(){
 		switch(quantidadeJogadores){
 
 			case 2:
-				//checar se todos os campos est„o preenchidos
+				//checar se todos os campos est√£o preenchidos
 				if( ((Cenario.length == 0) || (P1.length == 0) || (P2.length == 0) || (sala == undefined)) && (sala == 0)){
 					alert("Preencha todos os campos antes de iniciar.");
 					document.getElementById("buttonSend").disabled = false;
 				} else{
 					//Checar a sala escolhida
-					 if (sala == undefined){ alert("Escolha uma sala v·lida.");document.getElementById("buttonSend").disabled = false;}else {
+					 if (sala == undefined){ alert("Escolha uma sala v√°lida.");document.getElementById("buttonSend").disabled = false;}else {
 						
 						//Chegar se existe nomes iguais
 						if(P1 == P2){
@@ -302,11 +302,11 @@ function Iniciar(){
 							document.getElementById("buttonSend").disabled = false;
 						} else{
 		//-------------------------------------------------------------------------------------------------------------------------
-							$.post( "https://trosleihard.000webhostapp.com/TCP/SelectCodeRoom.php", { Code_Room: Cenario} )
+							$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 								.done(function( data ) {
 								ResultAjax = JSON.parse(data);
 								if((ResultAjax != Cenario)){
-									alert("Cen·rio inexistente em nosso banco de dados.");
+									alert("Cen√°rio inexistente em nosso banco de dados.");
 									document.getElementById("buttonSend").disabled = false;
 								} else{
 									One.Nick = document.getElementById("P1").value;
@@ -329,24 +329,24 @@ function Iniciar(){
 				}
 			break;
 			case 3:
-				//checar se todos os campos est„o preenchidos
+				//checar se todos os campos est√£o preenchidos
 				if((Cenario.length == 0) || (P1.length == 0) || (P2.length == 0) || (P3.length == 0) || (sala == undefined)){
 					alert("Preencha todos os campos antes de iniciar.");
 					document.getElementById("buttonSend").disabled = false;
 				} else {
 					//Checar a sala escolhida
-					if(sala == undefined){ alert("Escolha uma sala v·lida."); document.getElementById("buttonSend").disabled = false;} else {
+					if(sala == undefined){ alert("Escolha uma sala v√°lida."); document.getElementById("buttonSend").disabled = false;} else {
 						//Chegar se existe nomes iguais
 						if((P1 == P2) || (P1 == P3) || (P2 == P3)) {
 							alert("Para iniciar, todos devem ter nomes individuais.");
 							document.getElementById("buttonSend").disabled = false;
 						} else{
 			//-------------------------------------------------------------------------------------------------------------------------
-							$.post( "https://trosleihard.000webhostapp.com/TCP/SelectCodeRoom.php", { Code_Room: Cenario} )
+							$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 								.done(function( data ) {
 								ResultAjax = JSON.parse(data);
 								if(ResultAjax != Cenario){
-									alert("Cen·rio inexistente em nosso banco de dados.");
+									alert("Cen√°rio inexistente em nosso banco de dados.");
 									document.getElementById("buttonSend").disabled = false;
 								} else{
 									One.Nick = document.getElementById("P1").value;
@@ -370,24 +370,24 @@ function Iniciar(){
 				}
 				break;
 			case 4:
-				//checar se todos os campos est„o preenchidos
+				//checar se todos os campos est√£o preenchidos
 				if((Cenario.length == 0) || (P1.length == 0) || (P2.length == 0) || (P3.length == 0) || (P4.length == 0) || (sala == undefined)){
 					alert("Preencha todos os campos antes de iniciar.");
 					document.getElementById("buttonSend").disabled = false;
 				} else{
 					//Checar a sala escolhida
-					if(sala == undefined){ alert("Escolha uma sala v·lida.");document.getElementById("buttonSend").disabled = false;}else {
+					if(sala == undefined){ alert("Escolha uma sala v√°lida.");document.getElementById("buttonSend").disabled = false;}else {
 						//Chegar se existe nomes iguais
 						if((P1 == P2) || (P1 == P3) || (P1 == P4) || (P2 == P3) || (P2 == P4) || (P3 == P4)) {
 							alert("Para iniciar, todos devem ter nomes individuais.");
 							document.getElementById("buttonSend").disabled = false;
 						} else{
 		//-------------------------------------------------------------------------------------------------------------------------
-							$.post( "https://trosleihard.000webhostapp.com/TCP/SelectCodeRoom.php", { Code_Room: Cenario} )
+							$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 								.done(function( data ) {
 								ResultAjax = JSON.parse(data);
 								if(ResultAjax != Cenario){
-									alert("Cen·rio inexistente em nosso banco de dados.");
+									alert("Cen√°rio inexistente em nosso banco de dados.");
 									document.getElementById("buttonSend").disabled = false;
 								} else{
 									One.Nick = document.getElementById("P1").value;
@@ -419,16 +419,16 @@ function Iniciar(){
 	}
 }
 
-//Aqui h· a chamada de todos os dados para o jogo
+//Aqui h√° a chamada de todos os dados para o jogo
 function AjaxInicial(){
 	document.getElementById("Wait").style.visibility = "visible";
 //------------------------------------------------------------------------------------------------------------------
 	
-$.post( "https://trosleihard.000webhostapp.com/TCP/SelectAllHeritage.php", { Code_Room: Cenario} )
+$.post( "../PHP_JQuery/SelectAllHeritage.php", { Code_Room: Cenario} )
 	.done(function( data ) {
 	ResultAjaxHeritage = JSON.parse(data);
 	
-	//Nome dos patrimÙnios
+	//Nome dos patrim√¥nios
 	Nick_Heritage[0] = ResultAjaxHeritage[0];
 	Nick_Heritage[1] = ResultAjaxHeritage[10];
 	Nick_Heritage[2] = ResultAjaxHeritage[20];
@@ -445,7 +445,7 @@ $.post( "https://trosleihard.000webhostapp.com/TCP/SelectAllHeritage.php", { Cod
 	Nick_Heritage[13] = ResultAjaxHeritage[130];
 	Nick_Heritage[14] = ResultAjaxHeritage[140];
 	
-	//Quest„o dos patrimÙnios
+	//Quest√£o dos patrim√¥nios
 	Question_Heritage[0] = ResultAjaxHeritage[1];
 	Question_Heritage[1] = ResultAjaxHeritage[11];
 	Question_Heritage[2] = ResultAjaxHeritage[21];
@@ -581,7 +581,7 @@ $.post( "https://trosleihard.000webhostapp.com/TCP/SelectAllHeritage.php", { Cod
 	Tips_Heritage[13][2] = ResultAjaxHeritage[138];
 	Tips_Heritage[14][2] = ResultAjaxHeritage[148];
 	
-	//Imagem dos patrimÙnios
+	//Imagem dos patrim√¥nios
 	Image_Heritage[0] = ResultAjaxHeritage[9];
 	Image_Heritage[1] = ResultAjaxHeritage[19];
 	Image_Heritage[2] = ResultAjaxHeritage[29];
@@ -615,7 +615,7 @@ $.post( "https://trosleihard.000webhostapp.com/TCP/SelectAllHeritage.php", { Cod
 	document.getElementById("buttonSend").disabled = true;
 	
 	if(sala == 1){ // CASO A PARTIDA SEJA NO MODO ONLINE
-		document.getElementById("Div_Sala").style.visibility = "visible"; // DIV PARA MOSTRAR O N⁄MERO DA SALA
+		document.getElementById("Div_Sala").style.visibility = "visible"; // DIV PARA MOSTRAR O N√öMERO DA SALA
 	}
 	
 })
@@ -626,9 +626,9 @@ $.post( "https://trosleihard.000webhostapp.com/TCP/SelectAllHeritage.php", { Cod
 //------------------------------------------------------------------------------------------------------------------
 }
 //--------------------------------------------------------------------------------------
-//Os cÛdigos a seguir s„o acerca da funcionalidade do jogo
+//Os c√≥digos a seguir s√£o acerca da funcionalidade do jogo
 
-//Aqui È para igualar a quantidade de jogadores ao n˙mero de vezes
+//Aqui √© para igualar a quantidade de jogadores ao n√∫mero de vezes
 function AmountPlayer(){
 	switch(quantidadeJogadores){
 		case 2:
@@ -691,7 +691,7 @@ function AmountPlayer(){
 function AmountAux(){
 	switch(quantidadeJogadores){
 		case 3:
-			//Checar se alguÈm j· terminou o jogo
+			//Checar se algu√©m j√° terminou o jogo
 			if(((TimePlayer==1) && (EndPlayer[1] == true)) || ((TimePlayer==2) && (EndPlayer[2] == true)) || ((TimePlayer==3) && (EndPlayer[3] == true)) || ((TimePlayer==4) && (EndPlayer[4] == true))) 
 			{
 				switch(TimePlayer)
@@ -738,7 +738,7 @@ function AmountAux(){
 			break;
 			
 		case 4:	
-			//Checar se alguÈm j· terminou o jogo
+			//Checar se algu√©m j√° terminou o jogo
 			if(((TimePlayer==1) && (EndPlayer[1] == true)) || ((TimePlayer==2) && (EndPlayer[2] == true)) || ((TimePlayer==3) && (EndPlayer[3] == true)) || ((TimePlayer==4) && (EndPlayer[4] == true))) 
 			{
 				switch(TimePlayer)
@@ -817,7 +817,7 @@ function LimparCanvas(){
 	ctx.clearRect(0, 0, 955, 655);
 }
 
-//Aqui È para as casas das perguntas
+//Aqui √© para as casas das perguntas
 function Question(PosX, PosY){
 		RandomQuestion = Math.floor(Math.random()*14);
 		document.getElementById("perguntas").style.visibility = "visible";
@@ -825,9 +825,9 @@ function Question(PosX, PosY){
 		seg = 51; P_I = 0;
 		Cronometro();
 		
-		//PatrimÙnio 1
+		//Patrim√¥nio 1
 		if((PosX == posicao[1][0] && PosY == posicao[1][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("1∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("1¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][2];
@@ -838,14 +838,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][2];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][3];
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 2
+		//Patrim√¥nio 2
 		else if((PosX == posicao[4][0] && PosY == posicao[4][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("2∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("2¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][3];
@@ -856,14 +856,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][3];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][0];  //Resposta Correta
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 3
+		//Patrim√¥nio 3
 		else if((PosX == posicao[9][0] && PosY == posicao[9][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("3∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("3¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][1];
@@ -874,14 +874,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][1];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][3];  
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 4
+		//Patrim√¥nio 4
 		else if((PosX == posicao[14][0] && PosY == posicao[14][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("4∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("4¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][3];
@@ -892,14 +892,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][3];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][0]; //Resposta Correta  
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 5
+		//Patrim√¥nio 5
 		else if((PosX == posicao[17][0] && PosY == posicao[17][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("5∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("5¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][3];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][2];
@@ -910,14 +910,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][2];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][0]; //Resposta Correta
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 6
+		//Patrim√¥nio 6
 		else if((PosX == posicao[20][0] && PosY == posicao[20][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("6∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("6¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][2];
@@ -928,14 +928,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][2];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][3]; 
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 7
+		//Patrim√¥nio 7
 		else if((PosX == posicao[23][0] && PosY == posicao[23][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("7∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("7¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][1];
@@ -946,14 +946,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][1];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][3]; 
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 8
+		//Patrim√¥nio 8
 		else if((PosX == posicao[26][0] && PosY == posicao[26][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("8∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("8¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][3];
@@ -964,14 +964,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][3];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][2]; 
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 9
+		//Patrim√¥nio 9
 		else if((PosX == posicao[29][0] && PosY == posicao[29][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("9∞ Quest„o - " + Question_Heritage[RandomQuestion]);	
+			document.getElementById("patrimonioQuestion").innerHTML = ("9¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);	
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
@@ -982,14 +982,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][3]; 
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 10
+		//Patrim√¥nio 10
 		else if((PosX == posicao[34][0] && PosY == posicao[34][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("10∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("10¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][1];
@@ -1000,14 +1000,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][1]; 
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][3]; 
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 11
+		//Patrim√¥nio 11
 		else if((PosX == posicao[38][0] && PosY == posicao[38][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("11∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("11¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][3];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][1];
@@ -1018,14 +1018,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][1]; 
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][0]; //Resposta Correta
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 12
+		//Patrim√¥nio 12
 		else if((PosX == posicao[44][0] && PosY == posicao[44][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("12∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("12¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][3];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][1];
@@ -1036,14 +1036,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][1]; 
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][0]; //Resposta Correta
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 13
+		//Patrim√¥nio 13
 		else if((PosX == posicao[47][0] && PosY == posicao[47][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("13∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("13¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][3];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][2];
@@ -1054,14 +1054,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][2]; 
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][1];
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 14
+		//Patrim√¥nio 14
 		else if((PosX == posicao[49][0] && PosY == posicao[49][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("14∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("14¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][1];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][3];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][0]; //Resposta Correta
@@ -1072,14 +1072,14 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][0]; //Resposta Correta
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][2];
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
-		//PatrimÙnio 15
+		//Patrim√¥nio 15
 		else if((PosX == posicao[53][0] && PosY == posicao[53][1])){
-			document.getElementById("patrimonioQuestion").innerHTML = ("15∞ Quest„o - " + Question_Heritage[RandomQuestion]);
+			document.getElementById("patrimonioQuestion").innerHTML = ("15¬∞ Quest√£o - " + Question_Heritage[RandomQuestion]);
 			document.getElementById("R1").innerHTML = "A) " + Answer_Question[RandomQuestion][2];
 			document.getElementById("R2").innerHTML = "B) " + Answer_Question[RandomQuestion][3];
 			document.getElementById("R3").innerHTML = "C) " + Answer_Question[RandomQuestion][1];
@@ -1090,10 +1090,10 @@ function Question(PosX, PosY){
 			document.getElementById("R3").value = Answer_Question[RandomQuestion][1];
 			document.getElementById("R4").value = Answer_Question[RandomQuestion][0]; //Resposta Correta
 			
-			//------------------ (Abaixo pertence ao div da correÁ„o)
+			//------------------ (Abaixo pertence ao div da corre√ß√£o)
 			$("#patrimonioImg").attr("src", "data:image/jpge;base64," + Image_Heritage[RandomQuestion]);
-			$("#patrimonioName").text("Nome do PatrimÙnio - " + Nick_Heritage[RandomQuestion]);
-			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser· pedido
+			$("#patrimonioName").text("Nome do Patrim√¥nio - " + Nick_Heritage[RandomQuestion]);
+			NumPatrimonio = RandomQuestion; // Variavel para saber qual patrimonio ser√° pedido
 		}
 }
 
@@ -1106,39 +1106,39 @@ function Imprevistos(PosX, PosY){
 	Cronometro();
 	
 	if((PosX == posicao[7][0] && PosY == posicao[7][1])){
-		document.getElementById("TextImprevistos").innerHTML = "VocÍ caiu numa poÁa de ·gua. Agora ter· que retornar para trocar suas roupas.";
+		document.getElementById("TextImprevistos").innerHTML = "Voc√™ caiu numa po√ßa de √°gua. Agora ter√° que retornar para trocar suas roupas.";
 		document.getElementById("TextQtdVoltas").innerHTML = "Volte 4 casas.";
 		QtdVoltas = 4;
 	}
 	if((PosX == posicao[12][0] && PosY == posicao[12][1])){
-		document.getElementById("TextImprevistos").innerHTML = "0:00 - Olha a hora!!! Est· muito tarde e por isso vocÍ foi atr·s do hotel mais prÛximo para se hospedar.";
+		document.getElementById("TextImprevistos").innerHTML = "0:00 - Olha a hora!!! Est√° muito tarde e por isso voc√™ foi atr√°s do hotel mais pr√≥ximo para se hospedar.";
 		document.getElementById("TextQtdVoltas").innerHTML = "Volte 4 casas.";
 		QtdVoltas = 4;
 	}
 	if((PosX == posicao[31][0] && PosY == posicao[31][1])){
-		document.getElementById("TextImprevistos").innerHTML = "VocÍ se perdeu e acabou entrando no parque. Agora ter· que retornar para refazer seu caminho.";
+		document.getElementById("TextImprevistos").innerHTML = "Voc√™ se perdeu e acabou entrando no parque. Agora ter√° que retornar para refazer seu caminho.";
 		document.getElementById("TextQtdVoltas").innerHTML = "Volte 6 casas.";
 		QtdVoltas = 6;
 	}
 	if((PosX == posicao[36][0] && PosY == posicao[36][1])){
-		document.getElementById("TextImprevistos").innerHTML = "VocÍ entrou por engano no Ùnibus errado e acabou no sentido oposto da estrada. Agora ter· que descer na parada mais prÛxima.";
+		document.getElementById("TextImprevistos").innerHTML = "Voc√™ entrou por engano no √¥nibus errado e acabou no sentido oposto da estrada. Agora ter√° que descer na parada mais pr√≥xima.";
 		document.getElementById("TextQtdVoltas").innerHTML = "Volte 3 casas.";
 		QtdVoltas = 3;
 	}
 	if((PosX == posicao[41][0] && PosY == posicao[41][1])){
-		document.getElementById("TextImprevistos").innerHTML = "As crianÁas se perderam. Que perigo!!! VocÍ parou para ajuda-las a encontrar suas famÌlias.";
+		document.getElementById("TextImprevistos").innerHTML = "As crian√ßas se perderam. Que perigo!!! Voc√™ parou para ajuda-las a encontrar suas fam√≠lias.";
 		document.getElementById("TextQtdVoltas").innerHTML = "Volte 4 casas.";
 		QtdVoltas = 4;
 	}
 	if((PosX == posicao[51][0] && PosY == posicao[51][1])){
-		document.getElementById("TextImprevistos").innerHTML = "VocÍ esqueceu de sair com sua m·scara nesta pandemia do vÌrus Covid. Agora ter· que retornar para busca-la.";
-		document.getElementById("TextQtdVoltas").innerHTML = "Volte pro inÌcio - retorne 49 casas.";
+		document.getElementById("TextImprevistos").innerHTML = "Voc√™ esqueceu de sair com sua m√°scara nesta pandemia do v√≠rus Covid. Agora ter√° que retornar para busca-la.";
+		document.getElementById("TextQtdVoltas").innerHTML = "Volte pro in√≠cio - retorne 49 casas.";
 		QtdVoltas = 49;
 	}
 
 }
 
-//Fechar o div da Imprevistos e desenhar os peıes nos novos lugares
+//Fechar o div da Imprevistos e desenhar os pe√µes nos novos lugares
 function CloseImprevistos(){
 	document.getElementById("Imprevistos").style.visibility = "hidden";
 	document.getElementById("Dice").disabled = false;	
@@ -1182,17 +1182,17 @@ function CloseImprevistos(){
 	}
 }
 
-// Aqui È para checar a resposta das questıes
+// Aqui √© para checar a resposta das quest√µes
 function Answers(EscolhaDoUsuario){
 	Temporizador = false;
-	numDicas = 0; //Zerar o n˙mero de dicas apÛs o jogador ter respondido 	 a quest„o
+	numDicas = 0; //Zerar o n√∫mero de dicas ap√≥s o jogador ter respondido 	 a quest√£o
 	
 	var Answer;
 	
 	if (sala == 0) {
 		
 
-		//Pegar a resposta correspondente ao bot„o clicado
+		//Pegar a resposta correspondente ao bot√£o clicado
 		switch(EscolhaDoUsuario){
 			case 0:
 				Answer = document.getElementById("R1").value;
@@ -1211,16 +1211,16 @@ function Answers(EscolhaDoUsuario){
 				break;
 		}
 		
-		//Conferir se a resposta do bot„o bate com a resposta certa
+		//Conferir se a resposta do bot√£o bate com a resposta certa
 		if(Answer == Answer_Question[NumPatrimonio][0]){
 			document.getElementById('correctSound').play();
-			//PontuaÁ„o alterada para caso ele selecione alguma dica
+			//Pontua√ß√£o alterada para caso ele selecione alguma dica
 			if(numDicas > 0){
 				PtsQuestion -= (numDicas*100);
 			} else{
 				PtsQuestion = 500;
 			}
-			//PontuaÁ„o por jogador
+			//Pontua√ß√£o por jogador
 			switch(TimePlayer){
 				case 1:
 					One.Score += PtsQuestion;
@@ -1262,10 +1262,10 @@ function Answers(EscolhaDoUsuario){
 					break;
 			}
 			
-			PtsQuestion = 500; //Ao final, deve-se devolver os pontos iniciais a vari·vel
+			PtsQuestion = 500; //Ao final, deve-se devolver os pontos iniciais a vari√°vel
 		} else{
 			document.getElementById('failSound').play();
-			//PontuaÁ„o por jogador
+			//Pontua√ß√£o por jogador
 			switch(TimePlayer){
 				case 1:
 					One.Score -= 250;
@@ -1317,7 +1317,7 @@ function CloseDiv_Aux(){
 	document.getElementById("perguntas").style.visibility = "hidden";
 }*/
 
-//Fechar o div da correÁ„o
+//Fechar o div da corre√ß√£o
 function CloseCorrecao(){
 	document.getElementById("blockDica").style.visibility = "hidden";
 	document.getElementById("perguntas").style.visibility = "hidden";
@@ -1327,9 +1327,9 @@ function CloseCorrecao(){
 function AbrirDivDica(){
 	document.getElementById("blockDica").style.visibility = "visible";
 	
-	//Aqui vai ser acionado automaticamente, pois no momento que ele clicar no bot„o da dica, esse n˙mero j· n„o pode ser mais 0
+	//Aqui vai ser acionado automaticamente, pois no momento que ele clicar no bot√£o da dica, esse n√∫mero j√° n√£o pode ser mais 0
 	if( numDicas == 0){
-		alert("VocÍ tem acesso a apenas 3 dicas. Ao ler e fechar a primeira dica, caso opte por outra, basta reclicar no mesmo bot„o.");
+		alert("Voc√™ tem acesso a apenas 3 dicas. Ao ler e fechar a primeira dica, caso opte por outra, basta reclicar no mesmo bot√£o.");
 		numDicas = 1;
 	}
 	
@@ -1346,7 +1346,7 @@ function AbrirDivDica(){
 			numDicas += 1;
 			break;
 		case 3:
-			document.getElementById("TitleDica").innerHTML = "DICA UM, DOIS E TR S"
+			document.getElementById("TitleDica").innerHTML = "DICA UM, DOIS E TR√äS"
 			document.getElementById("dica").innerHTML = Tips_Heritage[NumPatrimonio][0] + "<br><br>" + Tips_Heritage[NumPatrimonio][1] + "<br><br>" + Tips_Heritage[NumPatrimonio][2];
 			numDicas = 3;
 			break;
@@ -1395,7 +1395,7 @@ function IluminarNome(TimePlayer){
 	}
 }
 
-//Aqui contabiliza a pontuaÁ„o
+//Aqui contabiliza a pontua√ß√£o
 function Score(TimePlayer, Dado){
 	switch(TimePlayer){
 		case 1:
@@ -1415,7 +1415,7 @@ function Score(TimePlayer, Dado){
 			document.getElementById("PontosJogadorAmarelo").innerHTML = Four.Score.toFixed(0);
 			break;
 		default:
-			alert("Erro para alterar a pontuaÁ„o do jogador!");
+			alert("Erro para alterar a pontua√ß√£o do jogador!");
 			break;
 	}
 }
@@ -1423,7 +1423,7 @@ function Score(TimePlayer, Dado){
 //Aqui desenha os pinos no tabuleiro
 function DrawPieces(MapSpace){
 	
-//Aqui em baixo ser· gabiarra, ent„o n„o mexe!
+//Aqui em baixo ser√° gabiarra, ent√£o n√£o mexe!
 	
 	switch(quantidadeJogadores){
 //--------------------------------------------------------------------------------
@@ -1433,10 +1433,10 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 					
@@ -1451,10 +1451,10 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 					
@@ -1469,10 +1469,10 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 					
@@ -1499,10 +1499,10 @@ function DrawPieces(MapSpace){
 						ctx.drawImage(ImgUnisexTwo,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 					}
 				}else{
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 					
@@ -1523,13 +1523,13 @@ function DrawPieces(MapSpace){
 						Canvas = document.getElementById("TPC");
 						ctx = Canvas.getContext("2d");
 						
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -1546,13 +1546,13 @@ function DrawPieces(MapSpace){
 					if( (One.MapSpace != 0) && (Two.MapSpace != 0) ){
 						Canvas = document.getElementById("TPC");
 						ctx = Canvas.getContext("2d");
-						//Verifica se o jogador 1 e 2 est„o na mesma posiÁ„o
+						//Verifica se o jogador 1 e 2 est√£o na mesma posi√ß√£o
 						if((One.MapSpace==Two.MapSpace) || (Two.MapSpace==One.MapSpace)){
 							ImgUnisex = new Image();
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							ImgUnisex.onload = function() {
@@ -1565,13 +1565,13 @@ function DrawPieces(MapSpace){
 								ctx.drawImage(ImgAz1,posBlue[Three.MapSpace][0],posBlue[Three.MapSpace][1]);
 							}
 						}else {
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							
@@ -1590,13 +1590,13 @@ function DrawPieces(MapSpace){
 						Canvas = document.getElementById("TPC");
 						ctx = Canvas.getContext("2d");
 						
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -1614,7 +1614,7 @@ function DrawPieces(MapSpace){
 							Canvas = document.getElementById("TPC");
 							ctx = Canvas.getContext("2d");
 						if((Two.MapSpace==Three.MapSpace) || (Three.MapSpace==Two.MapSpace)){
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
 							ImgUnisex = new Image();
@@ -1631,13 +1631,13 @@ function DrawPieces(MapSpace){
 								ctx.drawImage(ImgV1,posGreen[One.MapSpace][0],posGreen[One.MapSpace][1]);
 							}
 						} else {
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							
@@ -1656,13 +1656,13 @@ function DrawPieces(MapSpace){
 						Canvas = document.getElementById("TPC");
 						ctx = Canvas.getContext("2d");
 						
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -1684,7 +1684,7 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 							ImgUnisex.onload = function() {
@@ -1697,13 +1697,13 @@ function DrawPieces(MapSpace){
 								ctx.drawImage(ImgVrm1,posRed[Two.MapSpace][0],posRed[Two.MapSpace][1]);
 							}
 						} else {
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							
@@ -1722,13 +1722,13 @@ function DrawPieces(MapSpace){
 				Canvas = document.getElementById("TPC");
 				ctx = Canvas.getContext("2d");
 				if((One.MapSpace==Two.MapSpace) || (One.MapSpace==Three.MapSpace) || (Two.MapSpace==Three.MapSpace)){
-					//Verifica se o jogador 1 e 2 est„o na mesma posiÁ„o
+					//Verifica se o jogador 1 e 2 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Two.MapSpace) || (Two.MapSpace==One.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 						ImgUnisexTwo = new Image();
 						ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgUnisex.onload = function() {
@@ -1740,7 +1740,7 @@ function DrawPieces(MapSpace){
 						ImgAz1.onload = function() {
 							ctx.drawImage(ImgAz1,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
-					}//Verifica se o jogador 1 e 3 est„o na mesma posiÁ„o
+					}//Verifica se o jogador 1 e 3 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Three.MapSpace) || (Three.MapSpace==One.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -1752,13 +1752,13 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 						ImgVrm1.onload = function() {
 							ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 						}
-					}//Verifica se o jogador 2 e 3 est„o na mesma posiÁ„o
+					}//Verifica se o jogador 2 e 3 est√£o na mesma posi√ß√£o
 					if((Two.MapSpace==Three.MapSpace) || (Three.MapSpace==Two.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -1770,7 +1770,7 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
 						ImgV1.onload = function() {
@@ -1795,19 +1795,19 @@ function DrawPieces(MapSpace){
 						}
 					}
 				}else{
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
 					ImgV1.onload = function() {
 						ctx.drawImage(ImgV1,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 					}
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png"
 					ImgVrm1.onload = function() {
 						ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 					}
-					// pe„o Azul
+					// pe√£o Azul
 					ImgAz1 = new Image();
 					ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 					ImgAz1.onload = function() {
@@ -1824,16 +1824,16 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-					// pe„o Amarelo
+					// pe√£o Amarelo
 					ImgA1 = new Image();
 					ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-					// pe„o Azul
+					// pe√£o Azul
 					ImgAz1 = new Image();
 					ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 					
@@ -1859,10 +1859,10 @@ function DrawPieces(MapSpace){
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 						ImgUnisexTwo = new Image();
 						ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgUnisex.onload = function() {
@@ -1878,16 +1878,16 @@ function DrawPieces(MapSpace){
 							ctx.drawImage(ImgA1,posYellow[Four.MapSpace][0],posYellow[Four.MapSpace][1]);
 						}
 					} else {						
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -1913,10 +1913,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 							ImgUnisex.onload = function() {
@@ -1933,16 +1933,16 @@ function DrawPieces(MapSpace){
 							}
 						} else{
 
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							
@@ -1970,10 +1970,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							ImgUnisex.onload = function() {
@@ -1995,10 +1995,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 							ImgUnisex.onload = function() {
@@ -2020,10 +2020,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
 							ImgUnisex.onload = function() {
@@ -2047,7 +2047,7 @@ function DrawPieces(MapSpace){
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexThree = new Image();
 							ImgUnisexThree.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 							ImgUnisex.onload = function() {
@@ -2067,16 +2067,16 @@ function DrawPieces(MapSpace){
 						
 						
 					} else {
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2098,16 +2098,16 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-					// pe„o Amarelo
+					// pe√£o Amarelo
 					ImgA1 = new Image();
 					ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-					// pe„o Azul
+					// pe√£o Azul
 					ImgAz1 = new Image();
 					ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 					
@@ -2132,10 +2132,10 @@ function DrawPieces(MapSpace){
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 						ImgUnisexTwo = new Image();
 						ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 						ImgUnisex.onload = function() {
@@ -2151,16 +2151,16 @@ function DrawPieces(MapSpace){
 							ctx.drawImage(ImgA1,posYellow[Four.MapSpace][0],posYellow[Four.MapSpace][1]);
 						}
 					} else {
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2188,10 +2188,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
 							ImgUnisex.onload = function() {
@@ -2212,10 +2212,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
 							ImgUnisex.onload = function() {
@@ -2236,10 +2236,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 							ImgUnisex.onload = function() {
@@ -2262,7 +2262,7 @@ function DrawPieces(MapSpace){
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexThree = new Image();
 							ImgUnisexThree.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
 							ImgUnisex.onload = function() {
@@ -2279,16 +2279,16 @@ function DrawPieces(MapSpace){
 							}
 						}
 					} else {
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2310,16 +2310,16 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-					// pe„o Amarelo
+					// pe√£o Amarelo
 					ImgA1 = new Image();
 					ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-					// pe„o Azul
+					// pe√£o Azul
 					ImgAz1 = new Image();
 					ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 					
@@ -2344,10 +2344,10 @@ function DrawPieces(MapSpace){
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 						ImgUnisexTwo = new Image();
 						ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 						ImgUnisex.onload = function() {
@@ -2363,16 +2363,16 @@ function DrawPieces(MapSpace){
 							ctx.drawImage(ImgVrm1,posRed[Two.MapSpace][0],posRed[Two.MapSpace][1]);
 						}
 					} else {
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2399,10 +2399,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
 							ImgUnisex.onload = function() {
@@ -2423,10 +2423,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							ImgUnisex.onload = function() {
@@ -2447,10 +2447,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 							ImgUnisex.onload = function() {
@@ -2473,7 +2473,7 @@ function DrawPieces(MapSpace){
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexThree = new Image();
 							ImgUnisexThree.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 							ImgUnisex.onload = function() {
@@ -2490,16 +2490,16 @@ function DrawPieces(MapSpace){
 							}
 						}
 					} else {
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2521,16 +2521,16 @@ function DrawPieces(MapSpace){
 					Canvas = document.getElementById("TPC");
 					ctx = Canvas.getContext("2d");
 					
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";	
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-					// pe„o Amarelo
+					// pe√£o Amarelo
 					ImgA1 = new Image();
 					ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-					// pe„o Azul
+					// pe√£o Azul
 					ImgAz1 = new Image();
 					ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 					
@@ -2555,10 +2555,10 @@ function DrawPieces(MapSpace){
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 						ImgUnisexTwo = new Image();
 						ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgUnisex.onload = function() {
@@ -2574,16 +2574,16 @@ function DrawPieces(MapSpace){
 							ctx.drawImage(ImgAz1,posBlue[Three.MapSpace][0],posBlue[Three.MapSpace][1]);
 						}
 					}else{
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2610,10 +2610,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
-							// pe„o Vermelho
+							// pe√£o Vermelho
 							ImgVrm1 = new Image();
 							ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 							ImgUnisex.onload = function() {
@@ -2634,10 +2634,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
-							// pe„o Verde
+							// pe√£o Verde
 							ImgV1 = new Image();
 							ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
 							ImgUnisex.onload = function() {
@@ -2658,10 +2658,10 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
-							// pe„o Amarelo
+							// pe√£o Amarelo
 							ImgA1 = new Image();
 							ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 							ImgUnisex.onload = function() {
@@ -2682,7 +2682,7 @@ function DrawPieces(MapSpace){
 							ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
 							ImgUnisexTwo = new Image();
 							ImgUnisexTwo.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
-							// pe„o Azul
+							// pe√£o Azul
 							ImgAz1 = new Image();
 							ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 							ImgUnisex.onload = function() {
@@ -2696,16 +2696,16 @@ function DrawPieces(MapSpace){
 							}
 						}
 					} else {
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						
@@ -2727,10 +2727,10 @@ function DrawPieces(MapSpace){
 			}else {
 				Canvas = document.getElementById("TPC");
 				ctx = Canvas.getContext("2d");
-				//Verifica a sobreposiÁ„o de posiÁıes
+				//Verifica a sobreposi√ß√£o de posi√ß√µes
 				if((One.MapSpace==Two.MapSpace) || (One.MapSpace==Three.MapSpace) || (One.MapSpace == Four.MapSpace) ||
 					(Two.MapSpace==Three.MapSpace) || (Two.MapSpace == Four.MapSpace) || (Three.MapSpace==Four.MapSpace)){
-					//Verifica se o jogador 1 e 2 est„o na mesma posiÁ„o
+					//Verifica se o jogador 1 e 2 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Two.MapSpace) || (Two.MapSpace==One.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2742,20 +2742,20 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 						}
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 						ImgA1.onload = function() {
 							ctx.drawImage(ImgA1,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgAz1.onload = function() {
 							ctx.drawImage(ImgAz1,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
 					}
-					//Verifica se o jogador 1 e 3 est„o na mesma posiÁ„o
+					//Verifica se o jogador 1 e 3 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Three.MapSpace) || (Three.MapSpace==One.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2767,20 +2767,20 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 						}
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 						ImgVrm1.onload = function() {
 							ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 						}
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 						ImgA1.onload = function() {
 							ctx.drawImage(ImgA1,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
 					}
-					//Verifica se o jogador 1 e 4 est„o na mesma posiÁ„o
+					//Verifica se o jogador 1 e 4 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Four.MapSpace) || (Four.MapSpace==One.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2792,20 +2792,20 @@ function DrawPieces(MapSpace){
 						ImgUnisex.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 						}
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 						ImgVrm1.onload = function() {
 							ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 						}
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgAz1.onload = function() {
 							ctx.drawImage(ImgAz1,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
 					}
-					//Verifica se o jogador 2 e 3 est„o na mesma posiÁ„o
+					//Verifica se o jogador 2 e 3 est√£o na mesma posi√ß√£o
 					if((Two.MapSpace==Three.MapSpace) || (Three.MapSpace==Two.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2817,20 +2817,20 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png"	;
 						ImgV1.onload = function() {
 							ctx.drawImage(ImgV1,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 						}
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 						ImgA1.onload = function() {
 							ctx.drawImage(ImgA1,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
 					}
-					//Verifica se o pe„o 2 e 4 est„o na mesma posiÁ„o
+					//Verifica se o pe√£o 2 e 4 est√£o na mesma posi√ß√£o
 					if((Two.MapSpace==Four.MapSpace) || (Four.MapSpace==Two.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2842,20 +2842,20 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png"	;
 						ImgV1.onload = function() {
 							ctx.drawImage(ImgV1,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 						}
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgAz1.onload = function() {
 							ctx.drawImage(ImgAz1,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
 					}
-					//Verifica se os peıes 3 e 4 est„o na mesma posiÁ„o
+					//Verifica se os pe√µes 3 e 4 est√£o na mesma posi√ß√£o
 					if((Three.MapSpace==Four.MapSpace) || (Four.MapSpace==Three.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2867,20 +2867,20 @@ function DrawPieces(MapSpace){
 						ImgUnisexTwo.onload = function() {
 							ctx.drawImage(ImgUnisexTwo,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png"	;
 						ImgV1.onload = function() {
 							ctx.drawImage(ImgV1,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 						}					
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 						ImgVrm1.onload = function() {
 							ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 						}
 					}
-					//Verifica se os peıes 1, 2, 3 est„o na mesma posiÁ„o
+					//Verifica se os pe√µes 1, 2, 3 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Three.MapSpace) && (One.MapSpace==Two.MapSpace) && (Two.MapSpace==Three.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2897,14 +2897,14 @@ function DrawPieces(MapSpace){
 						ImgUnisexThree.onload = function() {
 							ctx.drawImage(ImgUnisexThree,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
-						// pe„o Amarelo
+						// pe√£o Amarelo
 						ImgA1 = new Image();
 						ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 						ImgA1.onload = function() {
 							ctx.drawImage(ImgA1,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
 					}
-					//Verifica se os peıes 2, 3, 4 est„o na mesma posiÁ„o
+					//Verifica se os pe√µes 2, 3, 4 est√£o na mesma posi√ß√£o
 					if((Four.MapSpace==Three.MapSpace) && (Four.MapSpace==Two.MapSpace) && (Two.MapSpace==Three.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2921,14 +2921,14 @@ function DrawPieces(MapSpace){
 						ImgUnisexThree.onload = function() {
 							ctx.drawImage(ImgUnisexThree,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
-						// pe„o Verde
+						// pe√£o Verde
 						ImgV1 = new Image();
 						ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png"	;
 						ImgV1.onload = function() {
 							ctx.drawImage(ImgV1,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 						}
 					}
-					//Verifica se os peıes 3, 4, 1 est„o na mesma posiÁ„o
+					//Verifica se os pe√µes 3, 4, 1 est√£o na mesma posi√ß√£o
 					if((Four.MapSpace==Three.MapSpace) && (Four.MapSpace==One.MapSpace) && (One.MapSpace==Three.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2945,14 +2945,14 @@ function DrawPieces(MapSpace){
 						ImgUnisexThree.onload = function() {
 							ctx.drawImage(ImgUnisexThree,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
-						// pe„o Vermelho
+						// pe√£o Vermelho
 						ImgVrm1 = new Image();
 						ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 						ImgVrm1.onload = function() {
 							ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 						}
 					}
-					//Verifica se os peıes 4, 1, 2 est„o na mesma posiÁ„o
+					//Verifica se os pe√µes 4, 1, 2 est√£o na mesma posi√ß√£o
 					if((Four.MapSpace==One.MapSpace) && (Four.MapSpace==Two.MapSpace) && (One.MapSpace==Two.MapSpace)){
 						ImgUnisex = new Image();
 						ImgUnisex.src = "../ImgsOfficial/Game/Pieces/Unisex.png";
@@ -2969,14 +2969,14 @@ function DrawPieces(MapSpace){
 						ImgUnisexThree.onload = function() {
 							ctx.drawImage(ImgUnisexThree,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 						}
-						// pe„o Azul
+						// pe√£o Azul
 						ImgAz1 = new Image();
 						ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 						ImgAz1.onload = function() {
 							ctx.drawImage(ImgAz1,posicao[Three.MapSpace][0],posicao[Three.MapSpace][1]);
 						}
 					}
-					//Verifica se os peıes 1, 2, 3 e 4 est„o na mesma posiÁ„o
+					//Verifica se os pe√µes 1, 2, 3 e 4 est√£o na mesma posi√ß√£o
 					if((One.MapSpace==Two.MapSpace) && (One.MapSpace==Three.MapSpace) && (One.MapSpace == Four.MapSpace) ||
 					(Two.MapSpace==Three.MapSpace) && (Two.MapSpace == Four.MapSpace) && (Three.MapSpace==Four.MapSpace)){
 						ImgUnisex = new Image();
@@ -3069,25 +3069,25 @@ function DrawPieces(MapSpace){
 					}
 					
 				}else{
-					// pe„o Verde
+					// pe√£o Verde
 					ImgV1 = new Image();
 					ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png"	;
 					ImgV1.onload = function() {
 						ctx.drawImage(ImgV1,posicao[One.MapSpace][0],posicao[One.MapSpace][1]);
 					}					
-					// pe„o Vermelho
+					// pe√£o Vermelho
 					ImgVrm1 = new Image();
 					ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 					ImgVrm1.onload = function() {
 						ctx.drawImage(ImgVrm1,posicao[Two.MapSpace][0],posicao[Two.MapSpace][1]);
 					}
-					// pe„o Amarelo
+					// pe√£o Amarelo
 					ImgA1 = new Image();
 					ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
 					ImgA1.onload = function() {
 						ctx.drawImage(ImgA1,posicao[Four.MapSpace][0],posicao[Four.MapSpace][1]);
 					}
-					// pe„o Azul
+					// pe√£o Azul
 					ImgAz1 = new Image();
 					ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 					ImgAz1.onload = function() {
@@ -3103,10 +3103,10 @@ function DrawPieces(MapSpace){
 	}
 }
 
-//Aqui È para mostrar a pontuaÁ„o de quem ganhou
+//Aqui √© para mostrar a pontua√ß√£o de quem ganhou
 function EndGame(){
 	
-		//PontuaÁ„o adicional de 1000 pts + Guardar na vari·vel EndPlayer true para os jogadores que terminarem o jogo
+		//Pontua√ß√£o adicional de 1000 pts + Guardar na vari√°vel EndPlayer true para os jogadores que terminarem o jogo
 		if( (EndPlayer[1] == false) && (One.MapSpace >= 55)){
 			One.Score += 1000;
 			document.getElementById("PontosJogadorVerde").innerHTML = One.Score;
@@ -3155,16 +3155,16 @@ function EndGame(){
 
 function EndFunction(){
 	document.getElementById('winSound').play();
-		//Checar se h· empate na pontuaÁ„o dos jogadores
+		//Checar se h√° empate na pontua√ß√£o dos jogadores
 		if( ((One.Score == Two.Score) && (quantidadeJogadores==2)) || ((One.Score == Two.Score) && (quantidadeJogadores == 3) && (Three.Score < One.Score)) || ((One.Score == Two.Score) && (quantidadeJogadores==4) && (Three.Score < One.Score) && (Four.Score < Two.Score)) || ((One.Score == Three.Score) && (quantidadeJogadores == 3) && ( Two.Score < One.Score)) || ((One.Score == Three.Score) && (quantidadeJogadores == 4) && (Two.Score < One.Score) && (Four.Score < Three.Score)) || ((One.Score == Four.Score) && (quantidadeJogadores == 4) && (Two.Score < One.Score) && (Three.Score < Four.Score)) || ((Three.Score == Two.Score) && (quantidadeJogadores == 3) && (Three.Score > One.Score)) || ((Three.Score == Two.Score) && (quantidadeJogadores == 4) && (One.Score < Three.Score) && (Four.Score < Two.Score)) || ((Four.Score == Two.Score) && (quantidadeJogadores == 4) && (One.Score < Four.Score) && (Three.Score < Two.Score)) || ((Three.Score == Four.Score) && (quantidadeJogadores == 4) && (One.Score < Three.Score) && (Two.Score < Four.Score)) ){
 			document.getElementById("TitleWinner").innerHTML = "V E N C E D O R E S";
 			
-			//PontuaÁ„o igual dos jogadores 1, 2
+			//Pontua√ß√£o igual dos jogadores 1, 2
 			if((One.Score == Two.Score)){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score;
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				
-				//Checar a posiÁ„o do terceiro e quarto colocado
+				//Checar a posi√ß√£o do terceiro e quarto colocado
 				if(Three.Score > Four.Score){
 					document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score;
 					document.getElementById("LooserTwo").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3173,12 +3173,12 @@ function EndFunction(){
 					document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 				}
 			}
-			//PontuaÁ„o igual dos jogadores 1, 3
+			//Pontua√ß√£o igual dos jogadores 1, 3
 			if((One.Score == Three.Score)){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score + " | " + Three.Nick + " - " + Three.Score;
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				
-				//Checar a posiÁ„o do terceiro e quarto colocado
+				//Checar a posi√ß√£o do terceiro e quarto colocado
 				if(Two.Score > Four.Score){
 					document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score;
 					document.getElementById("LooserTwo").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3187,12 +3187,12 @@ function EndFunction(){
 					document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 				}
 			}
-			//PontuaÁ„o igual dos jogadores 1, 4
+			//Pontua√ß√£o igual dos jogadores 1, 4
 			if((One.Score == Four.Score)){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score + " | " + Four.Nick + " - " + Four.Score;
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				
-				//Checar a posiÁ„o do terceiro e quarto colocado
+				//Checar a posi√ß√£o do terceiro e quarto colocado
 				if(Three.Score > Two.Score){
 					document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score;
 					document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
@@ -3201,12 +3201,12 @@ function EndFunction(){
 					document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 				}
 			}
-			//PontuaÁ„o igual dos jogadores 2, 3
+			//Pontua√ß√£o igual dos jogadores 2, 3
 			if((Three.Score == Two.Score)){
 				document.getElementById("Winner").innerHTML = Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score;
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				
-				//Checar a posiÁ„o do terceiro e quarto colocado
+				//Checar a posi√ß√£o do terceiro e quarto colocado
 				if(One.Score > Four.Score){
 					document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score;
 					document.getElementById("LooserTwo").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3215,12 +3215,12 @@ function EndFunction(){
 					document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 				}
 			}
-			//PontuaÁ„o igual dos jogadores 4, 2
+			//Pontua√ß√£o igual dos jogadores 4, 2
 			if((Four.Score == Two.Score)){
 				document.getElementById("Winner").innerHTML = Two.Nick + " - " + Two.Score + " | " + Four.Nick + " - " + Four.Score;
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				
-				//Checar a posiÁ„o do terceiro e quarto colocado
+				//Checar a posi√ß√£o do terceiro e quarto colocado
 				if(One.Score > Three.Score){
 					document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score;
 					document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
@@ -3229,12 +3229,12 @@ function EndFunction(){
 					document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 				}
 			}
-			//PontuaÁ„o igual dos jogadores 4, 3
+			//Pontua√ß√£o igual dos jogadores 4, 3
 			if((Three.Score == Four.Score)){
 				document.getElementById("Winner").innerHTML = Three.Nick + " - " + Three.Score + " | " + Four.Nick + " - " + Four.Score;
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				
-				//Checar a posiÁ„o do terceiro e quarto colocado
+				//Checar a posi√ß√£o do terceiro e quarto colocado
 				if(One.Score > Two.Score){
 					document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score;
 					document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
@@ -3243,7 +3243,7 @@ function EndFunction(){
 					document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 				}
 			}
-			//PontuaÁ„o igual dos jogadores 1, 2 e 3
+			//Pontua√ß√£o igual dos jogadores 1, 2 e 3
 			if((One.Score == Two.Score) && (One.Score == Three.Score) && (Three.Score == Two.Score)){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score;
 				document.getElementById("LooserTwo").style.visibility = "hidden";
@@ -3251,21 +3251,21 @@ function EndFunction(){
 				document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
 				
 			}
-			//PontuaÁ„o igual dos jogadores 2, 3 e 4
+			//Pontua√ß√£o igual dos jogadores 2, 3 e 4
 			if((Two.Score == Three.Score) && (Two.Score == Four.Score) && (Three.Score == Four.Score)){
 				document.getElementById("Winner").innerHTML = Four.Nick + " - " + Four.Score + " | " + Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score;
 				document.getElementById("LooserTwo").style.visibility = "hidden";
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				document.getElementById("LooserThree").innerHTML = One.Nick + " - " + One.Score;
 			}
-			//PontuaÁ„o igual dos jogadores 3, 4 e 1
+			//Pontua√ß√£o igual dos jogadores 3, 4 e 1
 			if((One.Score == Three.Score) && (One.Score == Four.Score) && (Three.Score == Four.Score)){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score + " | " + Three.Nick + " - " + Three.Score + " | " + Four.Nick + " - " + Four.Score;
 				document.getElementById("LooserTwo").style.visibility = "hidden";
 				document.getElementById("LooserThree").style.visibility = "hidden";
 				document.getElementById("LooserThree").innerHTML = Two.Nick + " - " + Two.Score;
 			}
-			//PontuaÁ„o igual dos jogadores 4, 1 e 2
+			//Pontua√ß√£o igual dos jogadores 4, 1 e 2
 			if((One.Score == Two.Score) && (One.Score == Four.Score) && (Four.Score == Two.Score)){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score + " | " + Four.Nick + " - " + Four.Score;
 				document.getElementById("LooserTwo").style.visibility = "hidden";
@@ -3273,9 +3273,9 @@ function EndFunction(){
 				document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
 			}
 			
-			//PontuaÁ„o igual de todos os jogadores
+			//Pontua√ß√£o igual de todos os jogadores
 			if((One.Score == Two.Score) && (One.Score == Three.Score) && (One.Score == Four.Score) && (Three.Score == Two.Score) && (Four.Score == Two.Score) && (Three.Score == Four.Score)){
-				document.getElementById("Winner").innerHTML = "VocÍs todos foram capazes de vencer este jogo! ParabÈns pela proeza!";
+				document.getElementById("Winner").innerHTML = "Voc√™s todos foram capazes de vencer este jogo! Parab√©ns pela proeza!";
 				document.getElementById("RowWinner").style.visibility = "hidden";
 				document.getElementById("TitleLooser").style.visibility = "hidden";
 				document.getElementById("LooserOne").style.visibility = "hidden";
@@ -3293,39 +3293,39 @@ function EndFunction(){
 			}
 		}else{
 		
-			//****Checar se o primeiro jogador teve a maior pontuaÁ„o***
+			//****Checar se o primeiro jogador teve a maior pontua√ß√£o***
 			if( (One.Score > Two.Score) && (One.Score > Three.Score) && (One.Score > Four.Score) ){
 				document.getElementById("Winner").innerHTML = One.Nick + " - " + One.Score;
 				
-				//Checar se o segundo, terceiro e quarto jogador teve a mesma pontuaÁ„o
+				//Checar se o segundo, terceiro e quarto jogador teve a mesma pontua√ß√£o
 				if ((Two.Score == Three.Score) && (Two.Score == Four.Score) && (Three.Score == Four.Score)){
 					document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score + " | " + Four.Nick + " - " + Four.Score;
 					document.getElementById("LooserTwo").style.visibility = "hidden";
 					document.getElementById("LooserThree").style.visibility = "hidden";
 				} else {
-					//Checar se o segundo e terceiro teve a mesma pontuaÁ„o
+					//Checar se o segundo e terceiro teve a mesma pontua√ß√£o
 					if (Two.Score == Three.Score){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserTwo").innerHTML = Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o segundo e quarto teve a mesma pontuaÁ„o
+					//Checar se o segundo e quarto teve a mesma pontua√ß√£o
 					if (Two.Score == Four.Score){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score + " | " + Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o terceiro e quarto teve a mesma pontuaÁ„o
+					//Checar se o terceiro e quarto teve a mesma pontua√ß√£o
 					if (Three.Score == Four.Score){
 						document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score + " | " + Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
 								
-					//Checar se o segundo jogador teve a segunda pontuaÁ„o maior
+					//Checar se o segundo jogador teve a segunda pontua√ß√£o maior
 					if((Two.Score > Three.Score) && (Two.Score > Four.Score)){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(Three.Score > Four.Score){
 							document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 							document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3334,10 +3334,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
 						}
 					}
-					//Checar se o terceiro jogador teve a segunda pontuaÁ„o maior
+					//Checar se o terceiro jogador teve a segunda pontua√ß√£o maior
 					if((Three.Score > Two.Score) && (Two.Score > Four.Score)){
 						document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(Two.Score > Four.Score){
 							document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 							document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3346,10 +3346,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = Two.Nick + " - " + Two.Score;
 						}
 					}
-					//Checar se o quarto jogador teve a segunda pontuaÁ„o maior
+					//Checar se o quarto jogador teve a segunda pontua√ß√£o maior
 					if((Four.Score > Two.Score) && (Two.Score > Three.Score)){
 						document.getElementById("LooserOne").innerHTML = Four.Nick + " - " + Four.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(Two.Score > Three.Score){
 							document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 							document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
@@ -3361,39 +3361,39 @@ function EndFunction(){
 				}
 			}
 			
-			//***Checar se o segundo jogador teve a maior pontuaÁ„o***
+			//***Checar se o segundo jogador teve a maior pontua√ß√£o***
 			if( (Two.Score > One.Score) && (Two.Score > Three.Score) && (Two.Score > Four.Score) ){
 				document.getElementById("Winner").innerHTML = Two.Nick + " - " + Two.Score;
 				
-				//Checar se o primeiro, terceiro e quarto jogador teve a mesma pontuaÁ„o
+				//Checar se o primeiro, terceiro e quarto jogador teve a mesma pontua√ß√£o
 				if ((One.Score == Three.Score) && (One.Score == Four.Score) && (Three.Score == Four.Score)){
 					document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Three.Nick + " - " + Three.Score + " | " + Four.Nick + " - " + Four.Score;
 					document.getElementById("LooserTwo").style.visibility = "hidden";
 					document.getElementById("LooserThree").style.visibility = "hidden";
 				} else {
-					//Checar se o primeiro e terceiro teve a mesma pontuaÁ„o
+					//Checar se o primeiro e terceiro teve a mesma pontua√ß√£o
 					if (One.Score == Three.Score){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserTwo").innerHTML = Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o primeiro e quarto teve a mesma pontuaÁ„o
+					//Checar se o primeiro e quarto teve a mesma pontua√ß√£o
 					if (One.Score == Four.Score){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o terceiro e quarto teve a mesma pontuaÁ„o
+					//Checar se o terceiro e quarto teve a mesma pontua√ß√£o
 					if (Three.Score == Four.Score){
 						document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score + " | " + Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.	Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
 				
-					//Checar se o primeiro jogador teve a segunda maior pontuaÁ„o
+					//Checar se o primeiro jogador teve a segunda maior pontua√ß√£o
 					if((One.Score > Three.Score) && (One.Score > Four.Score) ){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(Three.Score > Four.Score){
 							document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 							document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3402,10 +3402,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
 						}
 					}
-					//Checar se o terceiro jogador teve a segunda maior pontuaÁ„o
+					//Checar se o terceiro jogador teve a segunda maior pontua√ß√£o
 					if((Three.Score > One.Score) && (Three.Score > Four.Score)){
 						document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(One.Score > Four.Score){
 							document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 							document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3414,10 +3414,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = One.Nick + " - " + One.Score;
 						}
 					}
-					//Checar se o quarto jogador teve a segunda maior pontuaÁ„o
+					//Checar se o quarto jogador teve a segunda maior pontua√ß√£o
 					if ((Four.Score > One.Score) && (Four.Score > Three.Score)) {
 						document.getElementById("LooserOne").innerHTML = Four.Nick + " - " + Four.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if( One.Score > Three.Score){
 							document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 							document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
@@ -3428,39 +3428,39 @@ function EndFunction(){
 					}
 				}
 			}
-			//***Checar se o terceiro jogador teve a maior pontuaÁ„o***
+			//***Checar se o terceiro jogador teve a maior pontua√ß√£o***
 			if( (Three.Score > One.Score) && (Three.Score > Two.Score) && (Three.Score > Four.Score) ){
 				document.getElementById("Winner").innerHTML = Three.Nick + " - " + Three.Score;
 				
-				//Checar se o primeiro, segundo e quarto jogador teve a mesma pontuaÁ„o
+				//Checar se o primeiro, segundo e quarto jogador teve a mesma pontua√ß√£o
 				if ((Two.Score == One.Score) && (Two.Score == Four.Score) && (One.Score == Four.Score)){
 					document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score + " | " + Four.Nick + " - " + Four.Score;
 					document.getElementById("LooserTwo").style.visibility = "hidden";
 					document.getElementById("LooserThree").style.visibility = "hidden";
 				} else {
-					//Checar se o primeiro e segundo teve a mesma pontuaÁ„o
+					//Checar se o primeiro e segundo teve a mesma pontua√ß√£o
 					if (Two.Score == One.Score){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score;
 						document.getElementById("LooserTwo").innerHTML = Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o primeiro e quarto teve a mesma pontuaÁ„o
+					//Checar se o primeiro e quarto teve a mesma pontua√ß√£o
 					if (One.Score == Four.Score){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o segundo e quarto teve a mesma pontuaÁ„o
+					//Checar se o segundo e quarto teve a mesma pontua√ß√£o
 					if (Two.Score == Four.Score){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score + " | " + Four.Nick + " - " + Four.Score;
 						document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
 				
-					//Checar se o primeiro jogador teve a segunda maior pontuaÁ„o
+					//Checar se o primeiro jogador teve a segunda maior pontua√ß√£o
 					if( (One.Score > Two.Score) && (One.Score > Four.Score)){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(Two.Score > Four.Score){
 							document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 							document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3469,10 +3469,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = Two.Nick + " - " + Two.Score;
 						}
 					}
-					//Checar se o segundo jogador teve a segunda maior pontuaÁ„o
+					//Checar se o segundo jogador teve a segunda maior pontua√ß√£o
 					if((Two.Score > One.Score) && (Two.Score > Four.Score)){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(One.Score > Four.Score){
 							document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 							document.getElementById("LooserThree").innerHTML = Four.Nick + " - " + Four.Score;
@@ -3481,10 +3481,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = One.Nick + " - " + One.Score;
 						}
 					}
-					//Checar se o quarto jogador teve a segunda maior pontuaÁ„o
+					//Checar se o quarto jogador teve a segunda maior pontua√ß√£o
 					if((Four.Score > One.Score) && (Four.Score > Two.Score)){
 						document.getElementById("LooserOne").innerHTML = Four.Nick + " - " + Four.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(One.Score > Two.Score){
 							document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 							document.getElementById("LooserThree").innerHTML = Two.Nick + " - " + Two.Score;
@@ -3495,39 +3495,39 @@ function EndFunction(){
 					}
 				}
 			}
-			//***Checar se o quarto jogador teve a maior pontuaÁ„o***
+			//***Checar se o quarto jogador teve a maior pontua√ß√£o***
 			if( (Four.Score > One.Score) && (Four.Score > Two.Score) && (Four.Score > Three.Score) ){
 				document.getElementById("Winner").innerHTML = Four.Nick + " - " + Four.Score;
 				
-				//Checar se o primeiro, segundo e terceiro jogador teve a mesma pontuaÁ„o
+				//Checar se o primeiro, segundo e terceiro jogador teve a mesma pontua√ß√£o
 				if ((Two.Score == One.Score) && (Two.Score == Three.Score) && (One.Score == Three.Score)){
 					document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score;
 					document.getElementById("LooserTwo").style.visibility = "hidden";
 					document.getElementById("LooserThree").style.visibility = "hidden";
 				} else {
-					//Checar se o primeiro e segundo teve a mesma pontuaÁ„o
+					//Checar se o primeiro e segundo teve a mesma pontua√ß√£o
 					if (Two.Score == One.Score){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Two.Nick + " - " + Two.Score;
 						document.getElementById("LooserTwo").innerHTML = Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o primeiro e terceiro teve a mesma pontuaÁ„o
+					//Checar se o primeiro e terceiro teve a mesma pontua√ß√£o
 					if (One.Score == Three.Score){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score + " | " + Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
-					//Checar se o segundo e terceiro teve a mesma pontuaÁ„o
+					//Checar se o segundo e terceiro teve a mesma pontua√ß√£o
 					if (Two.Score == Three.Score){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score + " | " + Three.Nick + " - " + Three.Score;
 						document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 						document.getElementById("LooserThree").style.visibility = "hidden";
 					}
 				
-					//Checar se o primeiro jogador teve a segunda maior pontuaÁ„o
+					//Checar se o primeiro jogador teve a segunda maior pontua√ß√£o
 					if( (One.Score > Two.Score) && (One.Score > Three.Score)){
 						document.getElementById("LooserOne").innerHTML = One.Nick + " - " + One.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(Two.Score > Three.Score){
 							document.getElementById("LooserTwo").innerHTML = Two.Nick + " - " + Two.Score;
 							document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
@@ -3536,10 +3536,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = Two.Nick + " - " + Two.Score;
 						}
 					}
-					//Checar se o segundo jogador teve a segunda maior pontuaÁ„o
+					//Checar se o segundo jogador teve a segunda maior pontua√ß√£o
 					if( (Two.Score > One.Score) && (Two.Score > Three.Score)){
 						document.getElementById("LooserOne").innerHTML = Two.Nick + " - " + Two.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(One.Score > Three.Score){
 							document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 							document.getElementById("LooserThree").innerHTML = Three.Nick + " - " + Three.Score;
@@ -3548,10 +3548,10 @@ function EndFunction(){
 							document.getElementById("LooserThree").innerHTML = One.Nick + " - " + One.Score;
 						}
 					}
-					//Checar se o terceira jogador teve a segunda maior pontuaÁ„o
+					//Checar se o terceira jogador teve a segunda maior pontua√ß√£o
 					if( (Three.Score > One.Score) && (Three.Score > Two.Score)){
 						document.getElementById("LooserOne").innerHTML = Three.Nick + " - " + Three.Score;
-						//Checar a posiÁ„o do terceiro e quarto colocado
+						//Checar a posi√ß√£o do terceiro e quarto colocado
 						if(One.Score > Two.Score){
 							document.getElementById("LooserTwo").innerHTML = One.Nick + " - " + One.Score;
 							document.getElementById("LooserThree").innerHTML = Two.Nick + " - " + Two.Score;
@@ -3591,7 +3591,7 @@ function Cronometro(){
 			seg = "0" + seg;
 		}
 		
-		//Checar se ser· o fim do cronometro da pergunta (0) ou do imprevisto (1)
+		//Checar se ser√° o fim do cronometro da pergunta (0) ou do imprevisto (1)
 		if(P_I == 0){
 			document.getElementById("Temporizador").innerHTML = "00:" + seg;		
 		} else if (P_I == 1){
@@ -3600,7 +3600,7 @@ function Cronometro(){
 		//iniciar e desligar temporizador
 		if( ((Temporizador == true) && (seg == "00")) || (Temporizador == false) ){
 			
-			//Checar se ser· o fim do cronometro da pergunta (0) ou do imprevisto (1)
+			//Checar se ser√° o fim do cronometro da pergunta (0) ou do imprevisto (1)
 			if(P_I == 0){
 				document.getElementById("Temporizador").innerHTML = "00:00";	
 				FimCronometro(0);		
@@ -3614,7 +3614,7 @@ function Cronometro(){
 		}
 	}
 	else{
-		//Checar se ser· o fim do cronometro da pergunta (0) ou do imprevisto (1)
+		//Checar se ser√° o fim do cronometro da pergunta (0) ou do imprevisto (1)
 		if(P_I == 0){
 			document.getElementById("Temporizador").innerHTML = "00:00";		
 		} else if (P_I == 1){
@@ -3670,7 +3670,7 @@ function Walk(TimePlayer, Dado){
 			
 			//Fim do jogo
 			if(One.MapSpace >= 55){
-				One.MapSpace = 55; //Porque n„o existe posiÁ„o maior que essa
+				One.MapSpace = 55; //Porque n√£o existe posi√ß√£o maior que essa
 			}
 		
 			LimparCanvas();
@@ -3680,7 +3680,7 @@ function Walk(TimePlayer, Dado){
 
 			//Fim do jogo
 			if(Two.MapSpace >= 55){
-				Two.MapSpace = 55; //Porque n„o existe posiÁ„o maior que essa
+				Two.MapSpace = 55; //Porque n√£o existe posi√ß√£o maior que essa
 			}
 			
 			LimparCanvas();
@@ -3690,7 +3690,7 @@ function Walk(TimePlayer, Dado){
 			
 			//Fim do jogo
 			if(Three.MapSpace >= 55){
-				Three.MapSpace = 55; //Porque n„o existe posiÁ„o maior que essa
+				Three.MapSpace = 55; //Porque n√£o existe posi√ß√£o maior que essa
 			}
 			
 			LimparCanvas();
@@ -3700,7 +3700,7 @@ function Walk(TimePlayer, Dado){
 			
 			//Fim do jogo
 			if(Four.MapSpace >= 55){
-				Four.MapSpace = 55; //Porque n„o existe posiÁ„o maior que essa
+				Four.MapSpace = 55; //Porque n√£o existe posi√ß√£o maior que essa
 			}
 			
 			LimparCanvas();
@@ -3734,7 +3734,7 @@ function JogadorInicial(jogadorVez){
 	setTimeout(function(){document.getElementById("vez").style.visibility="hidden";}, 2500);
 }
 
-//Aqui È ativado no momento que a tela do jogo se abrir
+//Aqui √© ativado no momento que a tela do jogo se abrir
 function Start(){
 	
 	Canvas = document.getElementById("TPC");
@@ -3744,10 +3744,10 @@ function Start(){
 		case 2:
 			TimePlayer = Math.floor((Math.random()*2) + 1);
 			JogadorInicial(TimePlayer);
-			// pe„o Verde
+			// pe√£o Verde
 			ImgV1 = new Image();
 			ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-			// pe„o Vermelho
+			// pe√£o Vermelho
 			ImgVrm1 = new Image();
 			ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
 			
@@ -3762,13 +3762,13 @@ function Start(){
 		case 3:
 			TimePlayer = Math.floor((Math.random()*3) + 1);
 			JogadorInicial(TimePlayer);
-			// pe„o Verde
+			// pe√£o Verde
 			ImgV1 = new Image();
 			ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-			// pe„o Vermelho
+			// pe√£o Vermelho
 			ImgVrm1 = new Image();
 			ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-			// pe„o Azul
+			// pe√£o Azul
 			ImgAz1 = new Image();
 			ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 			
@@ -3785,16 +3785,16 @@ function Start(){
 		case 4:
 			TimePlayer = Math.floor((Math.random()*4) + 1);
 			JogadorInicial(TimePlayer);
-			// pe„o Verde
+			// pe√£o Verde
 			ImgV1 = new Image();
 			ImgV1.src = "../ImgsOfficial/Game/Pieces/Mas1Local.png";		
-			// pe„o Vermelho
+			// pe√£o Vermelho
 			ImgVrm1 = new Image();
 			ImgVrm1.src = "../ImgsOfficial/Game/Pieces/Fem2Local.png";
-			// pe„o Amarelo
+			// pe√£o Amarelo
 			ImgA1 = new Image();
 			ImgA1.src = "../ImgsOfficial/Game/Pieces/Mas2Local.png";
-			// pe„o Azul
+			// pe√£o Azul
 			ImgAz1 = new Image();
 			ImgAz1.src = "../ImgsOfficial/Game/Pieces/Fem1Local.png";
 			
@@ -3818,7 +3818,7 @@ function Start(){
 	IluminarNome(TimePlayer);
 }
 
-// funÁ„o ativada ao clicar no dado
+// fun√ß√£o ativada ao clicar no dado
 function Dice(){
 
 	//Checar o modo de jogo (Online ou Offline)
@@ -3830,7 +3830,7 @@ function Dice(){
 			//Evitar duplo clique
 			document.getElementById("Dice").disabled = true;
 
-			//Aqui gera um n˙mero aleatÛrio para o dado
+			//Aqui gera um n√∫mero aleat√≥rio para o dado
 			Dado = Math.floor((Math.random()*6) + 1);
 
 			// Imagem dos Dados
@@ -3853,7 +3853,7 @@ function Dice(){
 				document.getElementById("Dice").src = "../ImgsOfficial/Game/Dice/Six.png";
 			}
 	
-			//Aqui checa de quem È a vez do jogador
+			//Aqui checa de quem √© a vez do jogador
 			switch(TimePlayer){
 				case 1:
 					Walk(1, Dado);
@@ -3916,7 +3916,7 @@ function Dice(){
 					}
 					break;
 				default:
-					alert("Vez do jogador inv·lida!");
+					alert("Vez do jogador inv√°lida!");
 					break;
 			}
 			setTimeout(function(){document.getElementById("Dice").src = "../ImgsOfficial/Game/Dice/Dice.gif";}, 1000);
