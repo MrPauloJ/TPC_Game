@@ -26,7 +26,7 @@ function Edit(){
 		document.getElementById("Aguarde").style.visibility = "visible";
 			
 //--------------------------------------------------------------------
-		$.post( "https://trosleihard.000webhostapp.com/TCP/SelectHeritageToEdit.php", { Code_Room: OldCenario } )
+		$.post( "../PHP_JQuery/SelectHeritageToEdit.php", { Code_Room: OldCenario } )
 			.done(function( data ) {
 			var Result = JSON.parse(data);
 			document.getElementById("Heritage").value = Result[0];
@@ -65,7 +65,7 @@ function Name_Room(){
 		alert("Preencha o campo de informação para prosseguir");
 	} else{
 		alert("Aguarde");
-		$.post( "https://trosleihard.000webhostapp.com/TCP/Name_Room.php", { Code_Room:Code_Room, Name_Room: NameRoom_value} )
+		$.post( "../PHP_JQuery/Name_Room.php", { Code_Room:Code_Room, Name_Room: NameRoom_value} )
 			.done(function( data ) {
 			alert("Nome posto com sucesso!");
 			document.getElementById("PutName").style.visibility = "hidden";
@@ -127,7 +127,7 @@ function InfoHeritage(){
 
 //Função para obtenção das informações dos patrimônios que estarão no BD
 function PutInformation(){
-    $.post( "https://trosleihard.000webhostapp.com/TCP/SelectHeritage.php", { Code_Room: Code_Room, Position: TimePrevious} )
+    $.post( "../PHP_JQuery/SelectHeritage.php", { Code_Room: Code_Room, Position: TimePrevious} )
 		.done(function( data ) {
 		var Result = JSON.parse(data);
 		document.getElementById("Heritage").value = Result[0];
@@ -148,7 +148,7 @@ function PutInformation(){
 }
 
 function PutInformationEdit(){
-	$.post( "https://trosleihard.000webhostapp.com/TCP/SelectHeritage.php", { Code_Room: Code_Room, Position: (TimePrevious +1)} )
+	$.post( "../PHP_JQuery/SelectHeritage.php", { Code_Room: Code_Room, Position: (TimePrevious +1)} )
 		.done(function( data ) {
 		var Result = JSON.parse(data);
 		document.getElementById("Heritage").value = Result[0];
@@ -213,7 +213,7 @@ function PreviousButton(){
 						data.append('Tip_Three',TipThree);
 						data.append('Position', Position);
 						$.ajax({
-							url: 'https://trosleihard.000webhostapp.com/TCP/UpdateHeritage.php',
+							url: '../PHP_JQuery/UpdateHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
@@ -264,7 +264,7 @@ function NextButton(){
 				data.append('Tip_Three',TipThree);
 				data.append('Position', Position);
 				$.ajax({
-					url: 'https://trosleihard.000webhostapp.com/TCP/UpdateHeritage.php',
+					url: '../PHP_JQuery/UpdateHeritage.php',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -307,7 +307,7 @@ function NextButton(){
 				data.append('Tip_Three',TipThree);
 				data.append('Position', Position);
 				$.ajax({
-					url: 'https://trosleihard.000webhostapp.com/TCP/UpdateHeritage.php',
+					url: '../PHP_JQuery/UpdateHeritage.php',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -366,7 +366,7 @@ function NextButton(){
 						data.append('Tip_Three',TipThree);
 						data.append('Position', i);
 						$.ajax({
-							url: 'https://trosleihard.000webhostapp.com/TCP/InsertAllInfoHeritage.php',
+							url: '../PHP_JQuery/InsertAllInfoHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
@@ -405,7 +405,7 @@ function NextButton(){
 
 					// Passando informações
 		// ------------------------------------------------------------------------------
-					$.post( "https://trosleihard.000webhostapp.com/TCP/SelectMaxCodeRoom.php", function( data ) {
+					$.post( "../PHP_JQuery/SelectMaxCodeRoom.php", function( data ) {
 						var JSON_Data = JSON.parse(data);
 						if (JSON_Data == null){
 							Code_Room += 100000; //Gera um código aleatório de 6 posições (max - 999999 | min - 100000)
@@ -427,7 +427,7 @@ function NextButton(){
 						data.append('Tip_Two',TipTwo);
 						data.append('Tip_Three',TipThree);
 						$.ajax({
-							url: 'https://trosleihard.000webhostapp.com/TCP/FirstInsertAllInfoHeritage.php',
+							url: '../PHP_JQuery/FirstInsertAllInfoHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
@@ -475,7 +475,7 @@ function NextButton(){
 							data.append('Tip_Three',TipThree);
 							data.append('Position', i);
 							$.ajax({
-								url: 'https://trosleihard.000webhostapp.com/TCP/UpdateHeritage.php',
+								url: '../PHP_JQuery/UpdateHeritage.php',
 								data: data,
 								processData: false,
 								contentType: false,
@@ -528,7 +528,7 @@ function NextButton(){
 						data.append('Tip_Two',TipTwo);
 						data.append('Tip_Three',TipThree);
 						$.ajax({
-							url: 'https://trosleihard.000webhostapp.com/TCP/UpdateHeritage.php',
+							url: '../PHP_JQuery/UpdateHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
