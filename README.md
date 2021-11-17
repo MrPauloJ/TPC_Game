@@ -28,6 +28,7 @@ OBS: Projeto APK gerado pelo cordova, criado e gerenciado pela ADOBE.
 
 ### Instruções gerais
 
+- PHP utilizado para requisições JQuery pode estar hospedado em qualquer hospedagem que utilize PHP. 
 - WsRatchet simula o servidor web para a conexão online, este deve ser executado em uma VPS através de php.
 - Pasta "socket" e "vendor", e  arquivos "nginx_app.conf", "Procfile", "composer.json", "composer.lock" utilizados para configuração do servidor heroku
 - O jogo online tem dependência do  Ratchet/vendor/Composer do PHP
