@@ -28,11 +28,12 @@ OBS: Projeto APK gerado pelo cordova, criado e gerenciado pela ADOBE.
 
 ### Instruções gerais
 
-- PHP utilizado para requisições JQuery pode estar hospedado em qualquer hospedagem que utilize PHP. 
+- PHP_JQuery pode estar hospedado em qualquer hospedagem que utilize PHP caso o compilador android não rode PHP.
+- PHP_Jquery deve estar na mesma pasta do Index do jogo caso em servidor web.
 - WsRatchet simula o servidor web para a conexão online, este deve ser executado em uma VPS através de php.
 - Pasta "socket" e "vendor", e  arquivos "nginx_app.conf", "Procfile", "composer.json", "composer.lock" utilizados para configuração do servidor heroku
 - O jogo online tem dependência do  Ratchet/vendor/Composer do PHP
-- BD_TPC.sql se refere a criação do banco de dados, utilizado tanto offline quanto online.
+- BD_TPC.sql se refere a criação do banco de dados, utilizado tanto offline quanto online, ou seja, necessita conexão com internet.
 - Banco de dados salva os dados de cada patrimonio ( Imagem, Questões, Respostas )
 - POO apenas para os jogadores (CLIENTE e SERVER) e jogo(SERVER)
 - Estrutura do jogo no cliente está aberta, sem POO.
