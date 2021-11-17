@@ -302,7 +302,7 @@ function Iniciar(){
 							document.getElementById("buttonSend").disabled = false;
 						} else{
 		//-------------------------------------------------------------------------------------------------------------------------
-							$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
+							$.post( "/PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 								.done(function( data ) {
 								ResultAjax = JSON.parse(data);
 								if((ResultAjax != Cenario)){
