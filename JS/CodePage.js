@@ -6,6 +6,7 @@ var TimePrevious = 0; // Conta quantas vezes o botão previous foi clicado
 var i = 1; //variável dos "Ifs"
 var foto,Heritage, Question, AnswerRight, AnswerWrongOne, AnswerWrongTwo, AnswerWrongThree, form_data, TipOne, TipTwo, TipThree, Code_Room, Position;
 var OldCenario, FirstCenario; // Captura o código do cenário existente para edição
+var urlBase = window.location.origin;
 //-----------------------------------------------------------------------------------------------------
 
 //Caso o usuário vá gerar um "Novo Código"
@@ -26,7 +27,7 @@ function Edit(){
 		document.getElementById("Aguarde").style.visibility = "visible";
 			
 //--------------------------------------------------------------------
-		$.post( "../PHP_JQuery/SelectHeritageToEdit.php", { Code_Room: OldCenario } )
+		$.post( urlBase+"/PHP_JQuery/SelectHeritageToEdit.php", { Code_Room: OldCenario } )
 			.done(function( data ) {
 			var Result = JSON.parse(data);
 			document.getElementById("Heritage").value = Result[0];
@@ -65,7 +66,7 @@ function Name_Room(){
 		alert("Preencha o campo de informação para prosseguir");
 	} else{
 		alert("Aguarde");
-		$.post( "../PHP_JQuery/Name_Room.php", { Code_Room:Code_Room, Name_Room: NameRoom_value} )
+		$.post( urlBase+"/PHP_JQuery/Name_Room.php", { Code_Room:Code_Room, Name_Room: NameRoom_value} )
 			.done(function( data ) {
 			alert("Nome posto com sucesso!");
 			document.getElementById("PutName").style.visibility = "hidden";
@@ -127,7 +128,7 @@ function InfoHeritage(){
 
 //Função para obtenção das informações dos patrimônios que estarão no BD
 function PutInformation(){
-    $.post( "../PHP_JQuery/SelectHeritage.php", { Code_Room: Code_Room, Position: TimePrevious} )
+    $.post( urlBase+"/PHP_JQuery/SelectHeritage.php", { Code_Room: Code_Room, Position: TimePrevious} )
 		.done(function( data ) {
 		var Result = JSON.parse(data);
 		document.getElementById("Heritage").value = Result[0];
@@ -148,7 +149,7 @@ function PutInformation(){
 }
 
 function PutInformationEdit(){
-	$.post( "../PHP_JQuery/SelectHeritage.php", { Code_Room: Code_Room, Position: (TimePrevious +1)} )
+	$.post( urlBase+"PHP_JQuery/SelectHeritage.php", { Code_Room: Code_Room, Position: (TimePrevious +1)} )
 		.done(function( data ) {
 		var Result = JSON.parse(data);
 		document.getElementById("Heritage").value = Result[0];
@@ -213,7 +214,7 @@ function PreviousButton(){
 						data.append('Tip_Three',TipThree);
 						data.append('Position', Position);
 						$.ajax({
-							url: '../PHP_JQuery/UpdateHeritage.php',
+							url: urlBase+'/PHP_JQuery/UpdateHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
@@ -264,7 +265,7 @@ function NextButton(){
 				data.append('Tip_Three',TipThree);
 				data.append('Position', Position);
 				$.ajax({
-					url: '../PHP_JQuery/UpdateHeritage.php',
+					url: urlBase+'/PHP_JQuery/UpdateHeritage.php',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -307,7 +308,7 @@ function NextButton(){
 				data.append('Tip_Three',TipThree);
 				data.append('Position', Position);
 				$.ajax({
-					url: '../PHP_JQuery/UpdateHeritage.php',
+					url: urlBase+'/PHP_JQuery/UpdateHeritage.php',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -366,7 +367,7 @@ function NextButton(){
 						data.append('Tip_Three',TipThree);
 						data.append('Position', i);
 						$.ajax({
-							url: '../PHP_JQuery/InsertAllInfoHeritage.php',
+							url: urlBase+'/PHP_JQuery/InsertAllInfoHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
@@ -405,7 +406,7 @@ function NextButton(){
 
 					// Passando informações
 		// ------------------------------------------------------------------------------
-					$.post( "../PHP_JQuery/SelectMaxCodeRoom.php", function( data ) {
+					$.post( urlBase+"/PHP_JQuery/SelectMaxCodeRoom.php", function( data ) {
 						var JSON_Data = JSON.parse(data);
 						if (JSON_Data == null){
 							Code_Room += 100000; //Gera um código aleatório de 6 posições (max - 999999 | min - 100000)
@@ -427,7 +428,7 @@ function NextButton(){
 						data.append('Tip_Two',TipTwo);
 						data.append('Tip_Three',TipThree);
 						$.ajax({
-							url: '../PHP_JQuery/FirstInsertAllInfoHeritage.php',
+							url: urlBase+'/PHP_JQuery/FirstInsertAllInfoHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
@@ -475,7 +476,7 @@ function NextButton(){
 							data.append('Tip_Three',TipThree);
 							data.append('Position', i);
 							$.ajax({
-								url: '../PHP_JQuery/UpdateHeritage.php',
+								url: urlBase+'/PHP_JQuery/UpdateHeritage.php',
 								data: data,
 								processData: false,
 								contentType: false,
@@ -528,7 +529,7 @@ function NextButton(){
 						data.append('Tip_Two',TipTwo);
 						data.append('Tip_Three',TipThree);
 						$.ajax({
-							url: '../PHP_JQuery/UpdateHeritage.php',
+							url: urlBase+'/PHP_JQuery/UpdateHeritage.php',
 							data: data,
 							processData: false,
 							contentType: false,
