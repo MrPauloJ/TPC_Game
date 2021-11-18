@@ -1,8 +1,9 @@
 var ResultAjax = [[null,null],[null,null]];
 var firstConsulta=true;
+var urlBase = window.location.origin;
 
 function Now(){
-	$.post( "../PHP_JQuery/GaleriaHeritage.php", { } )
+	$.post( urlBase+"/PHP_JQuery/GaleriaHeritage.php", { } )
 	.done(function( data ) {	
 		ResultAjax = JSON.parse(data);
 	for(var i=0; i<=ResultAjax.length; i++){
@@ -19,7 +20,7 @@ function Now(){
 }
 
 function ajax(Code_Room){
-	$.post( "../PHP_JQuery/SelectAllNameHeritage.php", { Code_Room: Code_Room} )
+	$.post( urlBase+"/PHP_JQuery/SelectAllNameHeritage.php", { Code_Room: Code_Room} )
 	.done(function( data ) {
 	var Result = JSON.parse(data);
 	if(firstConsulta){
@@ -50,7 +51,7 @@ function ajax(Code_Room){
 
 /* fazer depois
 
-$.post( "../PHP_JQuery/SelectAllNameHeritage.php", { Code_Room: Code_Room} )
+$.post( urlBase+"/PHP_JQuery/SelectAllNameHeritage.php", { Code_Room: Code_Room} )
 .done(function( data ) {
 var Result = JSON.parse(data);
 alert("Aguarde");
