@@ -14,6 +14,7 @@ var InfoPAjax = ["","",""];
 var Comand, ID_Sala, Dado;
 var BtClicked = false;
 var Temporizador, seg, timeTimeout, P_I;
+var urlBase = window.location.origin;
 
 //Novo Script para o jogo Online
 function Add_ScriptOnline(file_script){
@@ -253,7 +254,7 @@ function Iniciar(){
 			document.getElementById("buttonSend").disabled = false;
 		} else {
 		//-------------------------------------------------------------------------------------------------------------------------
-				$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
+				$.post( urlBase+"/PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 					.done(function( data ) {
 					ResultAjax = JSON.parse(data);
 					if((ResultAjax != Cenario)){
@@ -342,7 +343,7 @@ function Iniciar(){
 							document.getElementById("buttonSend").disabled = false;
 						} else{
 			//-------------------------------------------------------------------------------------------------------------------------
-							$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
+							$.post( urlBase+"/PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 								.done(function( data ) {
 								ResultAjax = JSON.parse(data);
 								if(ResultAjax != Cenario){
@@ -383,7 +384,7 @@ function Iniciar(){
 							document.getElementById("buttonSend").disabled = false;
 						} else{
 		//-------------------------------------------------------------------------------------------------------------------------
-							$.post( "../PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
+							$.post( urlBase+"/PHP_JQuery/SelectCodeRoom.php", { Code_Room: Cenario} )
 								.done(function( data ) {
 								ResultAjax = JSON.parse(data);
 								if(ResultAjax != Cenario){
@@ -424,7 +425,7 @@ function AjaxInicial(){
 	document.getElementById("Wait").style.visibility = "visible";
 //------------------------------------------------------------------------------------------------------------------
 	
-$.post( "../PHP_JQuery/SelectAllHeritage.php", { Code_Room: Cenario} )
+$.post( urlBase+"/PHP_JQuery/SelectAllHeritage.php", { Code_Room: Cenario} )
 	.done(function( data ) {
 	ResultAjaxHeritage = JSON.parse(data);
 	
